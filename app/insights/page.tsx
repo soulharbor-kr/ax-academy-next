@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import NewsletterForm from '@/components/NewsletterForm'
+import ArticleReadButton from '@/components/ArticleReadButton'
 
 export const metadata = {
   title: '물류 및 산업 동향 | AX Academy',
@@ -302,10 +303,7 @@ export default function Insights() {
                   대형 언어 모델(LLM)이 단순 디지털 보조 도구를 넘어 세계에서 가장 복잡한 물류 네트워크의 운영 설계자로 전환되고 있다. 홍해 사태·관세 충격·탄소 규제의 3중 압박 속에서 AI는 어떤 역할을 맡고 있는가.
                 </p>
                 <div className="flex items-center gap-6">
-                  <button className="flex items-center gap-2 text-secondary font-bold hover:underline decoration-2 underline-offset-4">
-                    전문 읽기
-                    <span className="material-symbols-outlined">arrow_forward</span>
-                  </button>
+                  <ArticleReadButton />
                   <span className="text-on-surface-variant text-sm border-l border-outline-variant/30 pl-6">12분 읽기</span>
                 </div>
               </div>
@@ -326,7 +324,7 @@ export default function Insights() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
               {articles.map(({ img, alt, tag, date, read, title, desc }) => (
-                <article key={title} className="group cursor-pointer bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
+                <article key={title} className="group bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
                   <div className="aspect-[4/3] overflow-hidden bg-surface-container-low relative">
                     <Image src={img} alt={alt} fill className="object-cover transition-transform duration-500 group-hover:scale-110" />
                   </div>
