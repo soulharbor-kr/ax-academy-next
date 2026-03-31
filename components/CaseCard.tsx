@@ -1,9 +1,8 @@
-'use client'
-
 import Image from 'next/image'
-import { useState } from 'react'
+import Link from 'next/link'
 
 interface CaseCardProps {
+  slug: string
   img: string
   alt: string
   tag: string
@@ -12,19 +11,9 @@ interface CaseCardProps {
   company: string
 }
 
-export default function CaseCard({ img, alt, tag, title, desc, company }: CaseCardProps) {
-  const [toast, setToast] = useState(false)
-
-  const handleClick = () => {
-    setToast(true)
-    setTimeout(() => setToast(false), 2500)
-  }
-
+export default function CaseCard({ slug, img, alt, tag, title, desc, company }: CaseCardProps) {
   return (
-    <article
-      onClick={handleClick}
-      className="group bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer"
-    >
+    <Link href={`/cases/${slug}`} className="group bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 block">
       <div className="aspect-[4/3] overflow-hidden bg-surface-container-low relative">
         <Image src={img} alt={alt} fill className="object-cover transition-transform duration-500 group-hover:scale-110" />
       </div>
@@ -40,12 +29,6 @@ export default function CaseCard({ img, alt, tag, title, desc, company }: CaseCa
           </div>
         </div>
       </div>
-
-      {toast && (
-        <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 bg-primary text-white px-6 py-3 rounded-full shadow-lg text-sm font-medium animate-fade-in">
-          사례 상세 페이지를 준비 중입니다.
-        </div>
-      )}
-    </article>
+    </Link>
   )
 }
