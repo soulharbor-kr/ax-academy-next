@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Pretendard', 'Inter', sans-serif;
+    background-color: #f9f9f7;
+    color: #1a1c1b;
+  }
+  ::selection {
+    background-color: #fecb97;
+    color: #79542a;
+  }
+}
+
+@layer utilities {
+  .glass-nav {
+    background: rgba(249, 249, 247, 0.85);
+    backdrop-filter: blur(24px);
+  }
+  .newsreader-italic {
+    font-family: 'Newsreader', serif;
+    font-style: italic;
+  }
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    vertical-align: middle;
+  }
+}
