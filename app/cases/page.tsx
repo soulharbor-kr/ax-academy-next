@@ -1,5 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import CaseCard from '@/components/CaseCard'
+import CaseReadButton from '@/components/CaseReadButton'
 
 export const metadata = {
   title: '물류 AX 사례 | AX Academy',
@@ -87,10 +89,7 @@ export default function Cases() {
                   </div>
                 ))}
               </div>
-              <div className="flex items-center gap-2 text-secondary font-bold cursor-pointer group">
-                <span>자세히 보기</span>
-                <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
-              </div>
+              <CaseReadButton />
             </div>
           </div>
         </div>
@@ -108,24 +107,8 @@ export default function Cases() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-          {cases.map(({ img, alt, tag, title, desc, company }) => (
-            <article key={title} className="group bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
-              <div className="aspect-[4/3] overflow-hidden bg-surface-container-low relative">
-                <Image src={img} alt={alt} fill className="object-cover transition-transform duration-500 group-hover:scale-110" />
-              </div>
-              <div className="p-8">
-                <span className="text-tertiary font-bold text-xs uppercase tracking-widest block mb-3">{tag}</span>
-                <h3 className="font-headline text-xl font-bold text-primary mb-3 group-hover:text-secondary transition-colors">{title}</h3>
-                <p className="text-on-surface-variant text-sm leading-relaxed mb-4">{desc}</p>
-                <div className="flex items-center justify-between">
-                  <span className="text-xs text-on-surface-variant">{company}</span>
-                  <div className="flex items-center gap-1 text-secondary font-bold text-sm">
-                    <span>자세히</span>
-                    <span className="material-symbols-outlined text-sm">chevron_right</span>
-                  </div>
-                </div>
-              </div>
-            </article>
+          {cases.map((c) => (
+            <CaseCard key={c.title} {...c} />
           ))}
         </div>
       </section>
